@@ -3,9 +3,12 @@ import React, { useState } from "react";
 
 const defaultRecipe: Recipe = {
   name: "Dan's Best Recipe",
+  initialTemp: 20,
 };
 interface Recipe {
   name: string;
+  description?: string;
+  initialTemp?: number;
 }
 
 export const AddRecipe = () => {
@@ -40,7 +43,7 @@ export const AddRecipe = () => {
   return (
     <>
       <section>
-        <h2>Add New Recipe</h2>
+        <h1>Add New Recipe</h1>
         <form className="center" onSubmit={handleSubmit}>
           <input
             type="text"
