@@ -1,31 +1,57 @@
 "use client";
 import React, { useState } from "react";
 
-export const AddRecipe = () => {
-  const [name, setName] = useState("");
+const defaultRecipe: Recipe = {
+  name: "Dan's Best Recipe",
+};
+interface Recipe {
+  name: string;
+}
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    const recipe = await fetch("/api/db/createRecipe", {
-      method: "POST",
-      body: JSON.stringify({ name }),
-    });
+export const AddRecipe = () => {
+  const [recipeName, setRecipeName] = useState("");
+
+  async function postRecipe(recipeName: string): Promise<Recipe["name"]> {
+    try {
+      const response = await fetch("/api/db/createRecipe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ name: recipeName }),
+      });
+      const recipe: Recipe["name"] = await response.json();
+      console.log(recipe);
+      return recipe;
+    } catch (error) {
+      console.log("There was an error:", error);
+      const recipe: Recipe["name"] = defaultRecipe["name"];
+      return recipe;
+    }
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const recipe: Recipe["name"] = await postRecipe(recipeName);
+    console.log("The recipe name is " + recipe);
   };
 
   return (
     <>
       <section>
-        <header>Add New Recipe</header>
-        <form onSubmit={handleSubmit}>
+        <h2>Add New Recipe</h2>
+        <form className="center" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Recipe name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            placeholder="Name your recipe"
+            value={recipeName}
+            onChange={(event) => setRecipeName(event.target.value)}
           />
           <button type="submit">Submit</button>
         </form>
       </section>
+      <style jsx>{``}</style>
     </>
   );
 };
