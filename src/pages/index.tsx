@@ -16,7 +16,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <AddRecipe />
+        <div className={styles.description}>
+          <AddRecipe />
+        </div>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
