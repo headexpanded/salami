@@ -14,7 +14,7 @@ export default async function ChefsPage() {
   return (
     <>
       <div className="sub-container">
-        <h3>Chef Profile</h3>
+        <h3>Your Profile</h3>
 
         {chefs.map((chef) => (
           <div key={chef.id}>

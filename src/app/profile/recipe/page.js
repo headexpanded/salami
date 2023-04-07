@@ -14,7 +14,7 @@ export default function RecipePage() {
   return (
     <>
       <div className="sub-container">
-        <h2>Recipes:</h2>
+        <h3>Your Recipes:</h3>
         <div className="sub-container-detail">
           <p>Name: </p>
           <p>Desc: </p>
