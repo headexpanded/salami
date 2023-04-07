@@ -11,9 +11,39 @@ datasource db {
 }
 
 model Recipe {
-  id String @default(cuid()) @id
+  id Int @id @default(autoincrement())
   name String @unique
   description String?
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
+  chef Chef @relation(fields: [chefId], references: [id])
+  chefId Int
+  tags Tag[]
+  controllers Controller[]
+}
+
+model Chef {
+  id Int @id @default(autoincrement())
+  name String @unique
+  email String @unique
+  password String
+  recipes Recipe[]
+}
+
+model Tag {
+  id Int @id @default(autoincrement())
+  name String @unique
+  recipes Recipe[]
+}
+
+model Controller{
+  id Int @id @default(autoincrement())
+  name String @unique
+  description String?
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+  publicIpAddress String
+  privateIpAddress String 
+  isActive Boolean @default(false)
+  recipes Recipe[]
 }
