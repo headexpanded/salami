@@ -13,14 +13,16 @@ export default function RecipePage() {
   const recipe = recipes[1];
   return (
     <>
-      <div className="sub-container">
-        <h3>Your Recipes:</h3>
-        <div className="sub-container-detail">
-          <p>Name: </p>
-          <p>Desc: </p>
-          <p>Extras:</p>
+      
+        <div className="sub-container animated fadeInDown">
+          <h3>Your Recipes:</h3>
+          <div className="sub-container-detail">
+            <p>Name: </p>
+            <p>Desc: </p>
+            <p>Extras:</p>
+          </div>
         </div>
-      </div>
+      
     </>
   );
 }
