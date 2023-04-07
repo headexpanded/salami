@@ -1,4 +1,3 @@
-
 import { FaAngleRight, FaBeer, FaCrown } from "react-icons/fa";
 import { PrismaClient } from "@prisma/client";
 import "../../../styles/globals.css";
@@ -10,12 +9,12 @@ async function fetchChefs() {
   return chefs;
 }
 
-export default async function ChefsPage ()  {
+export default async function ChefsPage() {
   const chefs = await fetchChefs();
   return (
     <>
       <div className="sub-container">
-        <h2>Chef Profile</h2>
+        <h3>Chef Profile</h3>
 
         {chefs.map((chef) => (
           <div key={chef.id}>
@@ -29,4 +28,4 @@ export default async function ChefsPage ()  {
       </div>
     </>
   );
-};
+}

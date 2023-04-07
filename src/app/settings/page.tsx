@@ -1,24 +1,33 @@
 import React from "react";
+import { PrismaClient } from "@prisma/client";
 import "../../styles/globals.css";
 
-export default function SettingsPage() {
-  //const chefs = await fetchChefs();
+const prisma = new PrismaClient();
+
+async function fetchControllers() {
+  const controllers = await prisma.controller.findMany();
+  return controllers;
+}
+
+export default async function SettingsPage() {
+  const controllers = await fetchControllers();
   return (
     <>
       <div className="sub-container">
-        <h2>Settings</h2>
+        <h3>Controllers</h3>
 
-        {/* {chefs.map((chef) => (
-          <div key={chef.id}>
+        {/* {controllers.map((controller) => (
+          <div key={controller.id}>
             <div className="sub-container-detail">
-              <p>Name: {chef.name}</p>
-              <p>Email: {chef.email}</p>
-              <p>Recipes: </p>
+              <p>Controller Name: Raspberry Pi</p>
+              <p>Description: {controller.description}</p>
+              <p>Public IP: {controller.publicIpAddress}</p>
+              <p>Private IP: {controller.privateIpAddress}</p>
+              <p>Active: {controller.isActive}</p>
             </div>
           </div>
         ))} */}
       </div>
     </>
   );
-};
-
+}
