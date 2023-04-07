@@ -16,17 +16,17 @@ export default async function SettingsPage() {
       <div className="sub-container">
         <h3>Controllers</h3>
 
-        {/* {controllers.map((controller) => (
+        {controllers.map((controller) => (
           <div key={controller.id}>
             <div className="sub-container-detail">
-              <p>Controller Name: Raspberry Pi</p>
+              <p>Controller Name: {controller.name}</p>
               <p>Description: {controller.description}</p>
               <p>Public IP: {controller.publicIpAddress}</p>
               <p>Private IP: {controller.privateIpAddress}</p>
               <p>Active: {controller.isActive}</p>
             </div>
           </div>
-        ))} */}
+        ))}
       </div>
     </>
   );
