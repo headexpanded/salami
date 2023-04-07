@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,11 +19,29 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@/lib": ["../lib/"],
-      "@/Components": ["./Components/"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@/lib": [
+        "../lib/"
+      ],
+      "@/Components": [
+        "./Components/"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+, "src/app/second/page.js", "src/api/hello/route.js", "pr.mjs", "src/app/current/layout.js", "src/app/settings/layout.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
