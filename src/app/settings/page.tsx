@@ -1,6 +1,8 @@
 import React from "react";
 import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 import "../../styles/globals.css";
+import EditControllerPage from "./editController/page";
 
 const prisma = new PrismaClient();
 
@@ -27,6 +29,16 @@ export default async function SettingsPage() {
             </div>
           </div>
         ))}
+        <div className="sub-container">
+          <div className="links">
+            <Link href="/settings/editController">
+              <button className="btn">Edit</button>
+            </Link>
+            <Link href="/settings/addController">
+              <button className="btn">Add New</button>
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
