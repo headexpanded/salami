@@ -28,6 +28,7 @@ model Chef {
   email String @unique
   password String
   recipes Recipe[]
+  controllers Controller[]
 }
 
 model Tag {
@@ -46,4 +47,6 @@ model Controller{
   privateIpAddress String 
   isActive Boolean @default(false)
   recipes Recipe[]
+  chefId Int
+  chef Chef @relation(fields: [chefId], references: [id])
 }
