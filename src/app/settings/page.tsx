@@ -14,7 +14,7 @@ export default async function SettingsPage() {
   return (
     <>
       <div className="sub-container">
-        <h3>Controllers</h3>
+        <h3>Your Controllers</h3>
 
         {controllers.map((controller) => (
           <div key={controller.id}>
@@ -23,7 +23,7 @@ export default async function SettingsPage() {
               <p>Description: {controller.description}</p>
               <p>Public IP: {controller.publicIpAddress}</p>
               <p>Private IP: {controller.privateIpAddress}</p>
-              <p>Active: {controller.isActive}</p>
+              <p>Active: {controller.isActive ? "Yes" : "No"}</p>
             </div>
           </div>
         ))}
