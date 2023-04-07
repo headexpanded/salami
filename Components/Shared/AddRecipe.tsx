@@ -36,8 +36,7 @@ export const AddRecipe = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const recipe: Recipe["name"] = await postRecipe(recipeName);
-    console.log("The recipe name is " + recipe);
+    postRecipe(recipeName);
   };
 
   return (
@@ -54,7 +53,11 @@ export const AddRecipe = () => {
           <button type="submit">Submit</button>
         </form>
       </section>
-      <style jsx>{``}</style>
+      <style jsx>{`
+      h1{
+        font-size: 1rem;
+        padding-top: 1rem;
+      }`}</style>
     </>
   );
 };

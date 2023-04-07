@@ -11,10 +11,10 @@ const Header = () => {
             <Link href="/">Salami</Link>
           </div>
           <div className="links">
-            <Link href="/">Curing Now</Link>
+            <Link href="/">Now Curing</Link>
             <Link href="/profile/recipe">Recipes</Link>
-          <Link href="/profile/chef">Chefs</Link>
-          <Link href="/settings">Settings</Link>
+          <Link href="/profile/chef">Chef</Link>
+          <Link href="/settings">Controllers</Link>
           </div>
         </div>
       </header>
