@@ -17,9 +17,6 @@ interface RecipeSettings {
   tempOn: number;
   hours: number;
 }
-
-
-
 interface RecipeSettingsInclude {
   select?: {
     day?: true;
@@ -37,7 +34,7 @@ interface RecipePageProps {
 
 const prisma = new PrismaClient();
 
-async function fetchRecipe(id: number): Promise<Recipe> {
+async function fetchRecipe(id: number): Promise<Recipe>   {
   try {
     const recipe = await prisma.recipe.findUnique({
       where: { id: id },
@@ -47,7 +44,7 @@ async function fetchRecipe(id: number): Promise<Recipe> {
     }
     console.log(recipe);
     return recipe;
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error);
     throw new Error(`Error fetching recipe: + ${error}`);
   } finally {
