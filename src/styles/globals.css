@@ -37,12 +37,13 @@ body {
 
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  background-color: #0047ab;
+  background-color: #dd0404;
   color: #fff;
   padding: 1rem;
   border-bottom: 5px solid #fff;
+  font-weight: 700;
 }
 
 .logo {
@@ -81,7 +82,7 @@ body {
 }
 
 .card {
-  /* border: 1px solid #ccc; */
+  border: 1px solid #ccc; 
   border-radius: 4px;
   padding: 1rem;
   margin: 1rem;
@@ -139,7 +140,7 @@ a {
   height: 100vh;
 }
 
-.controller-form{
+.controller-form {
   display:flex;
   flex-direction:column;
   width: 50%;
@@ -173,7 +174,7 @@ a {
   border-right: 0px;
 }
 
-.recipeGrid{
+.recipeGrid {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1rem;
