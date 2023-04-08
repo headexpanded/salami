@@ -21,38 +21,32 @@ export default async function SettingsPage() {
     const controllers = await fetchControllers();
     return (
       <>
-        
-          <div className="sub-container animated fadeInDown">
-            
-          
-          
-            <h3>Your Controllers</h3>
-            {controllers.map((controller) => (
-              <div key={controller.id}>
-                <div className="sub-container-detail">
-                  <h4>
-                    {controller.id}/ {controller.name}
-                  </h4>
-                  <p>{controller.description}</p>
-                  <p>Public IP: {controller.publicIpAddress}</p>
-                  <p>Private IP: {controller.privateIpAddress}</p>
-                  <p>Active: {controller.isActive ? "Yes" : "No"}</p>
-                </div>
-              </div>
-            ))}
-
-            <div className="sub-container-detail">
-              <div className="links">
-                <Link href="/settings/editController">
-                  <button className="btn">Edit</button>
-                </Link>
-                <Link href="/settings/addController">
-                  <button className="btn">Add New</button>
-                </Link>
+        <div className="sub-container animated fadeInDown">
+          <h3>Your Controllers</h3>
+          {controllers.map((controller) => (
+            <div key={controller.id}>
+              <div className="sub-container-detail">
+                <h4>
+                  {controller.id}/ {controller.name}
+                </h4>
+                <p>{controller.description}</p>
+                <p>Public IP: {controller.publicIpAddress}</p>
+                <p>Active: {controller.isActive ? "Yes" : "No"}</p>
               </div>
             </div>
+          ))}
+
+          <div className="sub-container-detail">
+            <div className="links">
+              <Link href="/settings/editController">
+                <button className="btn">Edit</button>
+              </Link>
+              <Link href="/settings/addController">
+                <button className="btn">Add New</button>
+              </Link>
+            </div>
           </div>
-        
+        </div>
       </>
     );
   } catch (error) {
