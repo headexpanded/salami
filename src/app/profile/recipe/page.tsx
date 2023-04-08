@@ -2,6 +2,7 @@ import React from "react";
 import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
 import "@/styles/globals.css";
+import Recipe from "../../../../Components/Shared/Recipe";
 
 interface Recipe {
   id: number | null;
@@ -34,24 +35,6 @@ interface RecipePageProps {
 
 const prisma = new PrismaClient();
 
-async function fetchRecipe(id: number): Promise<Recipe>   {
-  try {
-    const recipe = await prisma.recipe.findUnique({
-      where: { id: id },
-    });
-    if (!recipe) {
-      throw new Error(`Recipe not found: ${id}`);
-    }
-    console.log(recipe);
-    return recipe;
-  } catch (error: unknown) {
-    console.log(error);
-    throw new Error(`Error fetching recipe: + ${error}`);
-  } finally {
-    await prisma.$disconnect();
-  }
-}
-
 async function fetchRecipeSettings(recipeId: number) {
   try {
     const recipeSettings = await prisma.recipeSettings.findMany({
@@ -67,16 +50,12 @@ async function fetchRecipeSettings(recipeId: number) {
 }
 
 export default async function RecipePage() {
-  const recipe = await fetchRecipe(1);
-  console.log(recipe);
   const recipeSettings = await fetchRecipeSettings(1);
-  console.log(recipeSettings);
   return (
     <>
       <div className="sub-container animated fadeInDown">
-        <h3>Recipe: {recipe.name}</h3>
-        <p>Desc: {recipe.description} </p>
-        <p>Humidity Delay: 5</p>
+        <Recipe />
+        
         <div className="sub-container-detail">
           <div className="recipeGrid">
             {recipeSettings.map((setting: RecipeSettings) => (
