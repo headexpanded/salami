@@ -1,6 +1,7 @@
+// Calls all recipes from the API router
+// Puts them in individual list items.
 
-import React from "react";
-import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 
 interface Recipe {
   id: number | null;
@@ -9,37 +10,26 @@ interface Recipe {
   createdAt: Date | null;
 }
 
-const prisma = new PrismaClient();
-
 async function fetchRecipes(): Promise<Recipe[]> {
-  try {
-    const recipes = await prisma.recipe.findMany();
-    if (!recipes) {
-      throw new Error(`No recipes found`);
-    }
-    return recipes;
-  } catch (error: unknown) {
-    console.log(error);
-    throw new Error(`Error fetching recipe: + ${error}`);
-  } finally {
-    await prisma.$disconnect();
-  }
+  const response = await fetch("http://localhost:3000/api/recipes");
+  const recipes: Recipe[] = await response.json();
+  return recipes;
 }
 
-export default async function Recipe () {
-  const recipe = await fetchRecipes();
+const Recipe = async () => {
+  const recipes = await fetchRecipes();
   return (
-    
-    <div>
-      {
-        recipe.map((recipe: Recipe) => (
-          <div key={recipe.id}>
-            <h3>Recipe: {recipe.name}</h3>
-            <p>Desc: {recipe.description} </p>
-          </div>
-        ))
-      }
-    </div>
+    <ul className="recipe-list">
+      {recipes.map((recipe) => (
+        <li key={recipe.id}>
+          <Link href={`/profile/recipes/${recipe.id}`}>
+            <h3>{recipe.name}</h3>
+            <p>{recipe.description}</p>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 
+export default Recipe;
