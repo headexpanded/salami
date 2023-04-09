@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "../styles/globals.css";
 import Link from "next/link";
-import LoadingPage from "@/loading";
+import LoadingPage from "@/app/loading";
 
 const showCuring = () => {
   return (
@@ -27,7 +27,7 @@ const notCuring = () => {
       <p>No salami is being cured at the moment.</p>
       <p>Do some curing!</p>
       <div className="sub-container-detail">
-        <Link href="/profile/recipe">
+        <Link href="/profile/recipes">
           <button className="btn">Choose Recipe</button>
         </Link>
       </div>
