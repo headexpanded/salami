@@ -1,5 +1,6 @@
 import { FaAngleRight, FaBeer, FaCrown } from "react-icons/fa";
 import { PrismaClient } from "@prisma/client";
+import {TestRecipe} from "../../../../Components/Shared/Tester";
 import "../../../styles/globals.css";
 
 const prisma = new PrismaClient();
@@ -25,6 +26,7 @@ export default async function ChefsPage() {
               </div>
             </div>
           ))}
+        <TestRecipe />
         </div>
       
     </>
