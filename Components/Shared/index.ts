@@ -3,6 +3,7 @@ import Recipe from "./Recipe";
 import Controller from "./Controller";
 import { RecipeSettings } from "./RecipeSettings";
 import Header from "./Header";
+import Tester from "./CurrentData";
 
 export const Shared = {
   Recipe,
@@ -10,4 +11,5 @@ export const Shared = {
   AddRecipe,
   Controller,
   Header,
+  Tester,
 };

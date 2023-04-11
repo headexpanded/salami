@@ -1,7 +1,9 @@
 // Calls all controllers from the API router
 // Puts them in individual list items.
 
+
 import Link from "next/link";
+import CurrentData from "./CurrentData";
 
 interface Controller {
   id: number | null;
@@ -29,11 +31,23 @@ const Controller = async () => {
             <p>{controller.description}</p>
             <p>{controller.publicIpAddress}</p>
             {controller.isActive ? (
-              <p>This controller is active now</p>
+              <p>
+                <strong>Active</strong>
+              </p>
             ) : (
-              <p>Not currently in use</p>
+              <div className="sub-container-detail">
+                <p>Not active</p>{" "}
+                <button className="btn btn-action">Activate</button>
+              </div>
             )}
           </Link>
+          {controller.isActive ? (
+            <div>
+              <CurrentData controllerId={1} />
+            </div>
+          ) : (
+            <div></div>
+          )}
         </li>
       ))}
     </ul>
