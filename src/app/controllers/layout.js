@@ -1,4 +1,4 @@
-import React from "react";
+import "../../styles/globals.css";
 import styles from "./layout.module.css";
 import Controller from "../../../Components/Shared/Controller";
 export default function Layout({ children }) {
@@ -10,3 +10,4 @@ export default function Layout({ children }) {
     </div>
   );
 }
+export const revalidate = 60;

@@ -15,10 +15,19 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      link
+      rel="preload"
+      href="/api/recipes"
+      as="fetch"
+      crossorigin="anonymous"
+    >
       <body className={poppins.className}>
-              <Header />
-        <main className="container">{children}</main>
+        <Header />
+        <main className="container">
+          <div>{children}</div>
+        </main>
       </body>
     </html>
   );

@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./layout.module.css";
+//import styles from "./layout.module.css";
 export default function Layout({ children }) {
   return (
-    <div className={styles.innerLayout}>
+    <div>
       <div className="card">{children}</div>
     </div>
   );
