@@ -16,7 +16,7 @@ const RecipePage = ({ params: { id } }: RecipePageProps) => {
         <Link href="/profile/recipes" className="btn">
           Close
         </Link>
-        <Link href="/" className="btn">
+        <Link href="/controllers" className="btn">
           Use This Recipe
         </Link>
       </div>

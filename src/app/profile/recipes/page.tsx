@@ -10,14 +10,11 @@ export default function RecipesPage() {
       <main>
         <div className="sub-container">
           <div className="links">
-            
-              
             <Link href="/">
               <button className="btn">Add New Recipe</button>
             </Link>
             </div>
           </div>
-        
       </main>
     </>
   );

@@ -1,6 +1,6 @@
 import { FaAngleRight, FaBeer, FaCrown } from "react-icons/fa";
 import { PrismaClient } from "@prisma/client";
-import {TestRecipe} from "../../../../Components/Shared/Tester";
+import { TestRecipe } from "../../../../Components/Shared/CurrentData";
 import "../../../styles/globals.css";
 
 const prisma = new PrismaClient();
@@ -14,21 +14,19 @@ export default async function ChefsPage() {
   const chefs = await fetchChefs();
   return (
     <>
-      
-        <div className="sub-container animated fadeInDown">
-          <h3>Your Profile</h3>
-          {chefs.map((chef) => (
-            <div key={chef.id}>
-              <div className="sub-container-detail">
-                <p>Name: {chef.name}</p>
-                <p>Email: {chef.email}</p>
-                <p>Recipes: </p>
-              </div>
+      <div className="sub-container animated fadeInDown">
+        <h3>Your Profile</h3>
+        {chefs.map((chef) => (
+          <div key={chef.id}>
+            <div className="sub-container-detail">
+              <p>Name: {chef.name}</p>
+              <p>Email: {chef.email}</p>
+              <p>Recipes: </p>
             </div>
-          ))}
+          </div>
+        ))}
         <TestRecipe />
-        </div>
-      
+      </div>
     </>
   );
 }

@@ -1,22 +1,17 @@
-"use client";
+"use client"
 import { useState } from "react";
 import "../styles/globals.css";
 import Link from "next/link";
-import LoadingPage from "@/app/loading";
+import Controller from "../../Components/Shared/Controller";
+import CurrentData from "../../Components/Shared/CurrentData";
+
+// Main app page
 
 const showCuring = () => {
   return (
     <div className="sub-container animated fadeInDown">
       <h3>Now Curing:</h3>
-      <div className="sub-container-detail">
-        <p>Recipe: Oak-Smoked Italian</p>
-        <p>Start Date: 2023-04-07 14:35:54</p>
-        <p>Req. Temp: 23</p>
-        <p>Current Temp: 21.5</p>
-        <p>Req. Humidity: 14</p>
-        <p>Current Humidity: 16</p>
-        <p>Next Change: 2023-04-08 19:00:00</p>
-      </div>
+      <Controller />
     </div>
   );
 };
@@ -27,8 +22,8 @@ const notCuring = () => {
       <p>No salami is being cured at the moment.</p>
       <p>Do some curing!</p>
       <div className="sub-container-detail">
-        <Link href="/profile/recipes">
-          <button className="btn">Choose Recipe</button>
+        <Link href="/controllers">
+          <button className="btn">Select Controller</button>
         </Link>
       </div>
     </div>
@@ -37,5 +32,10 @@ const notCuring = () => {
 
 export default function Page() {
   const [isCuring, setIsCuring] = useState(false);
-  return <div class="card">{isCuring ? showCuring() : notCuring()}</div>;
+  return (
+    <div>
+      {/* <CurrentData controllerId={1} /> */}
+      <div className="card">{isCuring ? showCuring() : notCuring()}</div>
+    </div>
+  );
 }
