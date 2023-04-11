@@ -12,6 +12,5 @@ export async function GET() {
     throw new Error(`Error fetching recipe: + ${error}`);
   } finally {
     prisma.$disconnect();
-    
   }
 }
