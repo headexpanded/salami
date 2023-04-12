@@ -17,7 +17,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/lib": ["../lib/"],
-      "@/Components": ["./Components/"],
+      "@/Components/Shared": ["../Components/Shared/"],
       "@/styles": ["./src/styles/"]
     },
     "plugins": [
@@ -36,6 +36,6 @@
     "pr.mjs",
     "src/app/current/layout.js",
     "src/app/controllers/layout.js"
-  ],
+, "src/app/api/currentData/route.ts"  ],
   "exclude": ["node_modules"]
 }
