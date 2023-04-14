@@ -6,12 +6,12 @@ import "../../../styles/globals.css";
 
 export default function AddControllerPage() {
   const [controllerName, setControllerName] = useState("");
-  const [controllerDescription, setControllerDescription] = useState("");
+  const [controllerLocation, setControllerLocation] = useState("");
   const [controllerPublicIpAddress, setControllerPublicIpAddress] =
     useState("");
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log(controllerName + " " + controllerDescription);
+    console.log(controllerName + " " + controllerLocation);
   };
   return (
     <>
@@ -28,12 +28,12 @@ export default function AddControllerPage() {
             />
           </div>
           <div className="controller-form-input-wrapper">
-            <label htmlFor="description">Description:</label>
+            <label htmlFor="location">Location:</label>
             <input
               type="text"
               className="controller-form-input"
-              value={controllerDescription}
-              onChange={(e) => setControllerDescription(e.target.value)}
+              value={controllerLocation}
+              onChange={(e) => setControllerLocation(e.target.value)}
             />
           </div>
           <div className="controller-form-input-wrapper">
