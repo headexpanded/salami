@@ -14,7 +14,7 @@ const RecipePage = ({ params: { id } }: RecipePageProps) => {
       <RecipeSettings recipeId={id} />
       <div className="links">
         <Link href="/profile/recipes" className="btn">
-          Close
+          Back
         </Link>
         <Link href="/controllers" className="btn">
           Use This Recipe
