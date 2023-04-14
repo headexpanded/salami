@@ -34,7 +34,6 @@ const Controller = () => {
         body: JSON.stringify({ id, isActive: true }),
       });
       if (response.ok) {
-        console.log(response);
         const updatedController = await response.json();
         setControllers((prevControllers) => {
           return prevControllers.map((controller) => {
@@ -64,7 +63,6 @@ const Controller = () => {
         body: JSON.stringify({ id, isActive: false }),
       });
       if (response.ok) {
-        console.log(response);
         const updatedController = await response.json();
         setControllers((prevControllers) => {
           return prevControllers.map((controller) => {
