@@ -5,12 +5,16 @@
 <h3 align="center">My friend Dan cures home-made salami.</h3>
 
 </br></br>
-Dan needs a front end to manage a Raspberry Pi which controls his fridge's thermostat and humidifier
+Dan wants to manage a Raspberry Pi which controls his fridge's thermostat and humidifier
 - I'll use [Next.js](https://nextjs.org/) for the front end
 
 - [PostgreSQL](https://www.postgresql.org/) and [Prisma](https://www.prisma.io/) will CRUD Dan's recipes
 
-- Vercel will host, probably (maybe AWS).
+- [Socket.io](https://socket.io/) will connect Dan to his Raspberry Pi.
+
+- The RP will control the fridge via some [Python](https://www.python.org/) scripts
+
+- Haven't decided on client hosting yet (maybe AWS).
 
 
 Let's go :)
