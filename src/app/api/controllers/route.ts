@@ -1,4 +1,4 @@
-// API route for fetching all controllers
+// API routes for managing controllers
 
 import prisma from "@lib/prisma"
 
