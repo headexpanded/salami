@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import LoadingPage from "@/app/loading";
-import "../../../styles/globals.css";
+import "@/styles/globals.css";
 
 export default function AddControllerPage() {
   const [controllerName, setControllerName] = useState("");
@@ -46,7 +46,6 @@ export default function AddControllerPage() {
               onChange={(e) => setControllerPublicIpAddress(e.target.value)}
             />
           </div>
-
           <button className="submit-button" type="submit">
             Add
           </button>

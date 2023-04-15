@@ -41,13 +41,13 @@ model Tag {
 model Controller{
   id Int @id @default(autoincrement())
   name String @unique
-  description String?
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
   publicIpAddress String 
   isActive Boolean @default(false)
   recipes Recipe[]
   chefId Int
+  location String?
   chef Chef @relation(fields: [chefId], references: [id])
 }
 

@@ -9,7 +9,7 @@ import CurrentData from "./CurrentData";
 interface Controller {
   id: number;
   name: string;
-  description: string;
+  location: string;
   publicIpAddress: string;
   isActive: boolean;
   createdAt: Date | null;
@@ -97,7 +97,7 @@ const Controller = () => {
         <li key={controller.id}>
           <Link href={`/controllers`}>
             <h3>{controller.name}</h3>
-            <p>{controller.description}</p>
+            <p>{controller.location}</p>
             <p>{controller.publicIpAddress}</p>
             {controller.isActive ? (
               <div className="sub-container-detail">
