@@ -1,7 +1,7 @@
 import { AddRecipe } from "./AddRecipe";
 import Recipe from "./Recipe";
 import Controller from "./Controller";
-import { RecipeSettings } from "./RecipeSettings";
+import RecipeSettings  from "./RecipeSettings";
 import Header from "./Header";
 import Tester from "./CurrentData";
 

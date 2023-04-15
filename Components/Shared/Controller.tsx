@@ -21,12 +21,14 @@ async function fetchControllers(): Promise<Controller[]> {
   return controllers;
 }
 
+const DATA_SOURCE_URL = "http://localhost:3000/api/controllers";
+
 const Controller = () => {
   const [controllers, setControllers] = useState<Controller[]>([]);
 
   const handleConnectClick = async (id: number) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/controllers`, {
+      const response = await fetch(DATA_SOURCE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +57,7 @@ const Controller = () => {
 
   const handleDisConnectClick = async (id: number) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/controllers`, {
+      const response = await fetch(DATA_SOURCE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

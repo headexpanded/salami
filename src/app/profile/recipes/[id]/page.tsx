@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RecipeSettings } from "../../../../../Components/Shared/RecipeSettings";
+import RecipeSettings from "@Components/Shared/RecipeSettings";
 
 type RecipePageProps = {
   params: {

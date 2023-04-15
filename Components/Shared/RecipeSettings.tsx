@@ -1,5 +1,4 @@
-
-import prisma from "../../lib/prisma";
+import prisma from "@lib/prisma";
 
 interface RecipeSettings {
   day: string;
@@ -23,7 +22,7 @@ interface RecipeSettingsInclude {
 }
 
 type RecipeSettingsProps = {
-  recipeId: number,
+  recipeId: number;
 };
 
 async function fetchRecipeSettings(recipeId: number) {
@@ -40,26 +39,24 @@ async function fetchRecipeSettings(recipeId: number) {
   }
 }
 
-export const RecipeSettings = async ({recipeId}: RecipeSettingsProps) => {
+const RecipeSettings = async ({ recipeId }: RecipeSettingsProps) => {
   const recipeSettings = await fetchRecipeSettings(recipeId);
-  
 
   return (
-    
-        <div className="recipeGrid">
-          {recipeSettings.map((setting: RecipeSettings) => (
-            <div key={setting.day}>
-              <p>
-                <strong>Day: {setting.day}</strong>
-              </p>
-              <p>Temp: {setting.temp}</p>
-              <p>Humidity: {setting.humidity}</p>
-              <p>Temp Off: {setting.tempOff}</p>
-              <p>Temp On: {setting.tempOn}</p>
-            </div>
-          ))}
+    <div className="recipeGrid">
+      {recipeSettings.map((setting: RecipeSettings) => (
+        <div key={setting.day}>
+          <p>
+            <strong>Day: {setting.day}</strong>
+          </p>
+          <p>Temp: {setting.temp}</p>
+          <p>Humidity: {setting.humidity}</p>
+          <p>Temp Off: {setting.tempOff}</p>
+          <p>Temp On: {setting.tempOn}</p>
         </div>
-    
-    
+      ))}
+    </div>
   );
 };
+
+export default RecipeSettings;
