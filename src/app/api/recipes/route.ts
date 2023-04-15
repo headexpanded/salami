@@ -1,8 +1,7 @@
 
 // API route for fetching all recipes
 
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient(); 
+import prisma from "@lib/prisma" 
 
 export async function GET() {
   try {

@@ -1,7 +1,6 @@
 // API route for fetching all controllers
 
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import prisma from "@lib/prisma"
 
 export async function GET(request: Request) {
   try {
