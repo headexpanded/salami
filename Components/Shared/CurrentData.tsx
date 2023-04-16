@@ -1,63 +1,36 @@
-// Returns data from contoller API
+// Returns data from controller API
 "use client";
 import { useState, useEffect } from "react";
-
 import "@/styles/globals.css";
 
 interface CurrentData {
-  day: string;
   current_temperature: number;
-  target_temperature: number;
   current_humidity: number;
-  target_humidity: number;
-  temp_on: number;
-  temp_off: number;
-}
+}[]
 
 type CurrentDataPageProps = {
   controllerId: number;
 };
+
+const DATA_SOURCE_URL = "http://192.168.178.109:5000/api/current_data";
 async function fetchCurrentData(controllerId: number): Promise<CurrentData[]> {
   try {
-    const response = await fetch(
-      "http://192.168.178.109:5000/api/current_data",
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch(DATA_SOURCE_URL, {
+      headers: { "Content-Type": "application/json" },
+    });
     if (!response.ok) {
       throw new Error("Error fetching current data: ${response.statusText}");
     }
     const currentData: CurrentData[] = await response.json();
-    return currentData;
+    return currentData
   } catch (error) {
     console.log(error);
-    return [
-      {
-        day: "Not available",
-        current_temperature: 0,
-        target_temperature: 0,
-        current_humidity: 0,
-        target_humidity: 0,
-        temp_on: 0,
-        temp_off: 0,
-      },
-    ];
+    return [];
   }
 }
 
 const CurrentDataPage = ({ controllerId }: CurrentDataPageProps) => {
-  const [currentData, setCurrentData] = useState<CurrentData[]>([
-    {
-      day: "Hello",
-      current_temperature: 0,
-      target_temperature: 0,
-      current_humidity: 0,
-      target_humidity: 0,
-      temp_on: 0,
-      temp_off: 0,
-    },
-  ]);
+  const [currentData, setCurrentData] = useState<CurrentData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,46 +43,28 @@ const CurrentDataPage = ({ controllerId }: CurrentDataPageProps) => {
     return () => clearInterval(intervalId);
   }, [controllerId]);
 
+  if (!currentData[0]) {
+    return <div>Loading...</div>;
+  }
+
+  const {current_temperature, current_humidity} = currentData[0];
+
   return (
     <>
       <div className="card">
-        {currentData.map((currentData) => {
-          return (
-            <div key={currentData.day}>
-              <p>
-                <strong>Day: {currentData.day}</strong>
-              </p>
-              <div className="dataGrid">
-                <div>
-                  <p>Target Temp: {currentData.target_temperature}</p>
-                  <p>Current Temp: {currentData.current_temperature}</p>
-                  {currentData.current_temperature ===
-                  currentData.target_temperature ? (
-                    <p className="warning">Good</p>
-                  ) : (
-                    <p className="warning">Check!</p>
-                  )}
-                </div>
-                <div>
-                  <p>Target Humidity: {currentData.target_humidity}</p>
-                  <p>Target Humidity: {currentData.current_humidity}</p>
-                  {currentData.current_humidity ===
-                  currentData.target_humidity ? (
-                    <p className="warning">Good</p>
-                  ) : (
-                    <p className="warning">Check!</p>
-                  )}
-                </div>
-                <div>
-                  <p>Temp On: {currentData.temp_on}</p>
-                  <p>Temp Off: {currentData.temp_off}</p>
-                </div>
-              </div>
+        <div>
+          <div className="dataGrid">
+            <div>
+              <p>Current Temp: {current_temperature}</p>
             </div>
-          );
-        })}
+            <div>
+              <p>Current Humidity: {current_humidity}</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <style jsx>{`
+      <style jsx>
+        {`
       p {
         color: #333;
         font-size: 1rem;`}
