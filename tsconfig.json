@@ -36,7 +36,9 @@
     "src/api/hello/route.js",
     "pr.mjs",
     "src/app/current/layout.js",
-    "src/app/controllers/layout.js"
-, "src/app/api/currentData/route.ts", "src/app/api/auth/[...nextauth].ts"  ],
+    "src/app/controllers/layout.js",
+    "src/app/api/currentData/route.ts",
+    "src/app/api/auth/[...nextauth].ts"
+  ],
   "exclude": ["node_modules"]
 }
