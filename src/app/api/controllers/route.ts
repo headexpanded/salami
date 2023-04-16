@@ -1,13 +1,13 @@
 // API routes for managing controllers
-
+import { NextResponse } from "next/server";
 import prisma from "@lib/prisma"
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const controllers = await prisma.controller.findMany();
-    return new Response(JSON.stringify(controllers));
+    return NextResponse.json(controllers);
   } catch (error: unknown) {
-    throw new Error(`Error fetching recipe: + ${error}`);
+    throw new Error(`Error fetching controllers: + ${error}`);
   } finally {
     await prisma.$disconnect();
   }
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       where: { id },
       data: { isActive },
     });
-    return new Response(JSON.stringify(updatedController));
+    return NextResponse.json(updatedController);
   } catch (error: unknown) {
     throw new Error(`Error updating controller: ${error}`);
   } finally {

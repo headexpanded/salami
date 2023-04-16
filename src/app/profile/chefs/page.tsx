@@ -1,9 +1,8 @@
-import { FaAngleRight, FaBeer, FaCrown } from "react-icons/fa";
-import { PrismaClient } from "@prisma/client";
-import { TestRecipe } from "../../../../Components/Shared/CurrentData";
-import "../../../styles/globals.css";
 
-const prisma = new PrismaClient();
+import "@styles/globals.css";
+import prisma from "@lib/prisma";
+
+
 
 async function fetchChefs() {
   const chefs = await prisma.chef.findMany();
@@ -25,7 +24,6 @@ export default async function ChefsPage() {
             </div>
           </div>
         ))}
-        <TestRecipe />
       </div>
     </>
   );
