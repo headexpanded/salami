@@ -25,7 +25,9 @@ type RecipeSettingsProps = {
   recipeId: number;
 };
 
-async function fetchRecipeSettings(recipeId: number) {
+async function fetchRecipeSettings(
+  recipeId: number
+): Promise<RecipeSettings[]> {
   try {
     const recipeSettings = await prisma.recipeSettings.findMany({
       where: { recipeId: Number(recipeId) },
@@ -39,7 +41,7 @@ async function fetchRecipeSettings(recipeId: number) {
   }
 }
 
-const RecipeSettings = async ({ recipeId }: RecipeSettingsProps) => {
+export default  (async function RecipeSettings({ recipeId }: RecipeSettingsProps) {
   const recipeSettings = await fetchRecipeSettings(recipeId);
 
   return (
@@ -57,6 +59,6 @@ const RecipeSettings = async ({ recipeId }: RecipeSettingsProps) => {
       ))}
     </div>
   );
-};
+} as unknown as (props: RecipeSettingsProps) => JSX.Element);
 
-export default RecipeSettings;
+
