@@ -10,8 +10,10 @@ interface Recipe {
   createdAt: Date | null;
 }
 
+const DATA_SOURCE_URL = "http://localhost:3000/api/recipes";
+
 async function fetchRecipes(): Promise<Recipe[]> {
-  const response = await fetch("http://localhost:3000/api/recipes");
+  const response = await fetch(DATA_SOURCE_URL);
   const recipes: Recipe[] = await response.json();
   return recipes;
 }
