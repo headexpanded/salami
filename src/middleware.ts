@@ -1,14 +1,23 @@
+import { withClerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-export function middleware(request: Request) {
-  console.log("This is Middleware");
-  console.log(request.method);
-  console.log(request.url);
+import type { NextRequest } from "next/server";
 
-  const origin = request.headers.get("origin");
-  console.log(origin);
+export default withClerkMiddleware((req: NextRequest) => {
   return NextResponse.next();
-}
+});
 
+// Stop Middleware running on static files and public folder
 export const config = {
-  matcher: ["/api/:path*"],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next
+     * - static (static files)
+     * - favicon.ico (favicon file)
+     * - public folder
+     * - public folder
+     */
+    "/((?!static|.*\\..*|_next|favicon.ico).*)",
+    "/",
+  ],
 };

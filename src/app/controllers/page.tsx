@@ -1,10 +1,18 @@
+"use client"
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import React from "react";
 import Link from "next/link";
 import "@/styles/globals.css";
 
-export const revalidate = 60;
+const ControllersPage = () =>{
+  const { isLoaded, isSignedIn, user } = useUser();
+  const router = useRouter();
 
-export default async function ControllersPage() {
+if(isLoaded && !isSignedIn) {
+  router.push("/sign-in?redirect=/controllers");
+}
+
     return (
       <>
         <main>
@@ -19,3 +27,5 @@ export default async function ControllersPage() {
       </>
     );
 }
+
+export default ControllersPage
