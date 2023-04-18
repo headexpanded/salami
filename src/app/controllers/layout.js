@@ -1,7 +1,7 @@
 import "../../styles/globals.css";
 import styles from "./layout.module.css";
 import Controller from "../../../Components/Shared/Controller";
-export default function Layout({ children }) {
+export default function RootLayout({ children }) {
   return (
     <div className={styles.subcontainer}>
       <h3>Your Controllers</h3>
