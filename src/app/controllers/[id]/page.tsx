@@ -13,7 +13,7 @@ const ActiveControllerPage = ({ params: { controllerId } }: ActiveControllerPage
   return (
     <div className="card">
       <h3>Current Data</h3>
-      <CurrentData controllerId={controllerId} />
+      <CurrentData controllerId={controllerId} recipeId={1} />
       <div className="links">
         <Link href="/controllers" className="btn">
           Close

@@ -9,6 +9,7 @@ export default function AddControllerPage() {
   const [controllerLocation, setControllerLocation] = useState("");
   const [controllerPublicIpAddress, setControllerPublicIpAddress] =
     useState("");
+  const [controllerPort, setControllerPort] = useState("5000");
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log(controllerName + " " + controllerLocation);
@@ -44,6 +45,16 @@ export default function AddControllerPage() {
               placeholder="format: 000.000.000.0"
               value={controllerPublicIpAddress}
               onChange={(e) => setControllerPublicIpAddress(e.target.value)}
+            />
+          </div>
+          <div className="controller-form-input-wrapper">
+            <label htmlFor="controllerPort">Port:</label>
+            <input
+              type="text"
+              className="controller-form-input"
+              placeholder="5000"
+              value={controllerPort}
+              onChange={(e) => setControllerPort(e.target.value)}
             />
           </div>
           <button className="submit-button" type="submit">

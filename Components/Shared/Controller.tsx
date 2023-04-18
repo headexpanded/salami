@@ -16,14 +16,18 @@ interface Controller {
 }
 
 async function fetchControllers(): Promise<Controller[]> {
-  const response = await fetch("/api/controllers");
+  const response = await fetch("/api/controllers", { cache: "force-cache" });
   const controllers: Controller[] = await response.json();
   return controllers;
 }
 
 const DATA_SOURCE_URL = "http://localhost:3000/api/controllers";
 
-const Controller = () => {
+type ControllerProps = {
+  controllerId: number;
+}
+
+const Controller = ({controllerId}:ControllerProps) => {
   const [controllers, setControllers] = useState<Controller[]>([]);
 
   const handleConnectClick = async (id: number) => {
@@ -32,6 +36,7 @@ const Controller = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "max-age=604800",
         },
         body: JSON.stringify({ id, isActive: true }),
       });
@@ -61,6 +66,7 @@ const Controller = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "max-age=604800",
         },
         body: JSON.stringify({ id, isActive: false }),
       });
@@ -89,7 +95,6 @@ const Controller = () => {
       const controllers = await fetchControllers();
       setControllers(controllers);
     };
-
     fetchControllerData();
   }, []);
 
@@ -127,7 +132,7 @@ const Controller = () => {
           </Link>
           {controller.isActive ? (
             <div>
-              <CurrentData controllerId={controller.id} />
+              <CurrentData controllerId={controller.id} recipeId={1} />
             </div>
           ) : (
             <div></div>
