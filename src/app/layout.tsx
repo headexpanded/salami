@@ -1,7 +1,8 @@
 import React from "react";
 import { Poppins } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
-import Header from "../../Components/Shared/Header";
+import Header from "./Header";
+import Footer from "./Footer";
 import "@/styles/globals.css";
 
 const poppins = Poppins({
@@ -22,14 +23,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <body className={poppins.className}>
-      <ClerkProvider>
+      <body className={poppins.className}>
+        <ClerkProvider>
           <Header />
           <main className="container">
             <div>{children}</div>
           </main>
-      </ClerkProvider>
-        </body>
+          <Footer />
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
