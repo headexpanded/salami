@@ -6,7 +6,7 @@
 
 </br></br>
 Dan wants to manage a Raspberry Pi which controls his fridge's thermostat and humidifier
-- I'm using [Next.js 13.2.4](https://beta.nextjs.org/docs) for the front & back ends
+- I'm using [Next.js 13](https://beta.nextjs.org/docs) for the front & back ends
 
 - [PostgreSQL](https://www.postgresql.org/) and [Prisma](https://www.prisma.io/) will CRUD Dan's recipes
 
