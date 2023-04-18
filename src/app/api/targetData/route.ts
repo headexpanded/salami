@@ -38,7 +38,6 @@ export async function GET() {
     const targetSettings = await prisma.recipeSettings.findMany({
       where: { recipeId: Number(id), day: { equals: "17" } },
     });
-    console.log("The target settings are: " + targetSettings[0]?.humidity);
     return NextResponse.json(targetSettings);
   } catch (error) {
     throw Error(`Error fetching target data: + ${error}`);
