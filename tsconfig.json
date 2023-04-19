@@ -17,9 +17,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@lib/*": ["lib/*"],
+      "@/lib/*": ["lib/*"],
       "@Components/Shared/*": ["Components/Shared/"],
-      "@/styles": ["../src/styles/"]
+      "@/styles": ["../src/styles/"],
+      "@/public/*": ["public/*"]
     },
     "plugins": [
       {
@@ -37,8 +38,10 @@
     "pr.mjs",
     "src/app/current/layout.js",
     "src/app/controllers/layout.js",
-    "src/app/api/currentData/route.ts",
-    "src/app/api/auth/[...nextauth].ts"
-  ],
+    "src/app/api/targetData/route.ts",
+    "src/app/api/auth/[...nextauth].ts",
+    "src/app/api/auth/logout.tsx",
+    "src/app/sign-up"
+, "src/app/chefs/[chefId]/page.jsx", "lib/prisma.ts", "src/app/chefs/[chefId]/chef.jsx"  ],
   "exclude": ["node_modules"]
 }
