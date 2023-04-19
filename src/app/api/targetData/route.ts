@@ -1,6 +1,6 @@
 // Returns current fridge data from remote controller
 import { NextResponse } from "next/server";
-import prisma from "@lib/prisma";
+import prisma from "@/lib/prisma";
 
 /* const DATA_SOURCE_URL = "http://192.168.178.109:5000/api/current_data";
 
