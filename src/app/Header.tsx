@@ -1,7 +1,8 @@
 "use client";
-import { SignInButton, UserButton } from "@clerk/nextjs";
-import { SignedIn, SignedOut } from "@clerk/nextjs/app-beta/client";
+/* import { SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs/app-beta/client"; */
 import Link from "next/link";
+import LoginButton from "../../Components/Shared/LoginButton";
 
 const Header = () => {
   return (
@@ -13,21 +14,13 @@ const Header = () => {
 
         <div className="container">
           <div className="links">
-            <SignedIn>
-              <Link href="/controllers">Controllers</Link>
-              <Link href="/profile/recipes">Recipes</Link>
-            </SignedIn>
+            <Link href="/controllers">Controllers</Link>
+            <Link href="/profile/recipes">Recipes</Link>
           </div>
         </div>
         <div className="links">
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <SignedOut>
-            <SignInButton mode="modal">
-              <Link href="">Login</Link>
-            </SignInButton>
-          </SignedOut>
+          <Link href=""></Link>
+          
         </div>
       </header>
     </>
