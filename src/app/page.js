@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client";
-import { useState } from "react";
+
+
 import "@/styles/globals.css";
 import Link from "next/link";
 import Controller from "../../Components/Shared/Controller";
@@ -45,7 +45,7 @@ const notCuring = () => {
 };
 
 export default function HomePage() {
-  const [isCuring, setIsCuring] = useState(false);
+  
   return (
     <div>
       {/* <div className="card">{notCuring()}</div> */}
