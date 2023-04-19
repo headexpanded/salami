@@ -1,8 +1,5 @@
 "use client";
-/* import { SignInButton, UserButton } from "@clerk/nextjs";
-import { SignedIn, SignedOut } from "@clerk/nextjs/app-beta/client"; */
 import Link from "next/link";
-import LoginButton from "../../Components/Shared/LoginButton";
 
 const Header = () => {
   return (

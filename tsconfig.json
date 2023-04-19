@@ -42,6 +42,6 @@
     "src/app/api/auth/[...nextauth].ts",
     "src/app/api/auth/logout.tsx",
     "src/app/sign-up"
-, "src/app/chefs/[chefId]/page.jsx", "lib/prisma.ts", "src/app/chefs/[chefId]/chef.jsx"  ],
+, "src/app/chefs/[chefId]/page.jsx", "lib/prisma.ts", "src/app/chefs/[chefId]/chef.jsx", "src/app/sign-in/page.jsx", "src/pages/api/db/createRecipe.js"  ],
   "exclude": ["node_modules"]
 }

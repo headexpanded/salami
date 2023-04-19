@@ -4,7 +4,7 @@
 import Link from "next/link";
 
 interface Recipe {
-  id: number | null;
+  id: string | null;
   name: string;
   description: string;
   createdAt: Date | null;

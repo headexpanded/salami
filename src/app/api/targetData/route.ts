@@ -36,7 +36,7 @@ export async function GET() {
   console.log("The passed id is: " + id);
   try {
     const targetSettings = await prisma.recipeSettings.findMany({
-      where: { recipeId: Number(id), day: { equals: "17" } },
+      where: { recipeId: id.toString(), day: { equals: "17" } },
     });
     return NextResponse.json(targetSettings);
   } catch (error) {

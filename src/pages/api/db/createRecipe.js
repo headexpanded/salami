@@ -11,7 +11,7 @@ export default async function Handler(req, res) {
       });
       res.json({ name: newRecipe["name"], error: null });
     } catch (error) {
-      res.json({ error: error.message + " Hello Mark", recipeName: null });
+      res.json({ error: error.message });
     }
   });
 }

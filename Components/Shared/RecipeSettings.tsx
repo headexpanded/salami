@@ -7,7 +7,7 @@ interface RecipeSettings {
   tempOff: number;
   tempOn: number;
   hours: number;
-  recipeId: number;
+  recipeId: string;
 }
 
 interface RecipeSettingsInclude {
@@ -30,7 +30,7 @@ async function fetchRecipeSettings(
 ): Promise<RecipeSettings[]> {
   try {
     const recipeSettings = await prisma.recipeSettings.findMany({
-      where: { recipeId: Number(recipeId) },
+      where: { recipeId: recipeId },
     } as RecipeSettingsInclude);
     return recipeSettings;
   } catch (error) {

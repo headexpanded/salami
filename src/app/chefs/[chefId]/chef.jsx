@@ -9,7 +9,7 @@ const Chef = ({ chef }) => {
         <p>{chef?.name}</p>
         <p>{chef?.email}</p>
         <ul className="recipe-list">
-          {chef.controllers.length > 0 ? (
+          {chef?.controllers?.length > 0 ? (
             chef.controllers.map((controller) => (
               <li key="controllerId">
                 <p>{controller.name}</p>

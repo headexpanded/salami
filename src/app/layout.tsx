@@ -1,6 +1,5 @@
 import React from "react";
 import { Poppins } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import Header from "./Header";
 import Footer from "./Footer";
 import "@/styles/globals.css";
@@ -24,13 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <ClerkProvider>
-          <Header />
-          <main className="container">
-            <div>{children}</div>
-          </main>
-          <Footer />
-        </ClerkProvider>
+        <Header />
+        <main className="container">
+          <div>{children}</div>
+        </main>
+        <Footer />
       </body>
     </html>
   );
