@@ -1,18 +1,20 @@
+import { NextRequest, NextResponse } from "next/server";
 import Link from "next/link";
 
 interface AddController {
-  id: number;
+  id: string;
   name: string;
   location: string;
-  publicIPAddress: string;
-  port: number;
+  ipAddress: string;
+  port: string;
   isActive: boolean;
-  chefId: number;
-  recipeId: number;
+  chefId: string;
 }
 
+const DATA_SOURCE_URL = "http://localhost:3000/api/controllers";
+
 async function addController(data: AddController) {
-  const response = await fetch("/api/controllers", {
+  const response = await fetch(DATA_SOURCE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,3 +29,5 @@ async function addController(data: AddController) {
     throw new Error("Error adding controller: ${response.statusText}");
   }
 }
+
+export default AddController;

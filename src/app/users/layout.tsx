@@ -1,10 +1,7 @@
 import React from "react";
-import ChefPage from "./page";
-
 import "@/styles/globals.css";
 import styles from "./layout.module.css";
-
-export default function ChefLayout({
+export default function UsersLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -13,7 +10,6 @@ export default function ChefLayout({
     <section>
       <main>
         <div className={styles.subcontainer}>
-          <h3>The Only Chef</h3>
           <main>{children}</main>
         </div>
       </main>

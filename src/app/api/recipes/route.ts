@@ -3,12 +3,10 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma" 
 
-
-
 export async function GET(request: Request) {
   try {
     const recipes = await prisma.recipe.findMany();
-    return NextResponse.json(recipes);
+    return NextResponse.json({recipes}, {status: 200});
   } catch (error: unknown) {
     throw new Error(`Error fetching recipe: + ${error}`);
   } finally {

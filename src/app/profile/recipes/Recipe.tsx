@@ -13,7 +13,7 @@ interface Recipe {
 const DATA_SOURCE_URL = "http://localhost:3000/api/recipes";
 
 async function fetchRecipes(): Promise<Recipe[]> {
-  const response = await fetch(DATA_SOURCE_URL, {cache:"force-cache"});
+  const response = await fetch(DATA_SOURCE_URL, { cache: "force-cache" });
   const recipes: Recipe[] = await response.json();
   return recipes;
 }

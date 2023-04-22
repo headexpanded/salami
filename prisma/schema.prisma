@@ -8,27 +8,27 @@ datasource db {
 }
 
 model Recipe {
-  id             String           @id @default(cuid())
   name           String           @unique
   description    String           @default("no description provided")
   createdAt      DateTime?        @default(now())
   updatedAt      DateTime?        @updatedAt
-  chefId         String
+  id             String           @id @default(cuid())
+  userId         String
   controllers    Controller[]
-  chef           Chef             @relation(fields: [chefId], references: [id])
+  user           User             @relation(fields: [userId], references: [id])
   recipeSettings RecipeSettings[]
   tags           Tag[]            @relation("RecipeToTag")
 }
 
-model Chef {
+model User {
   id            String       @id @default(cuid())
   name          String       @unique
   email         String       @unique
   emailVerified DateTime?
   image         String?
+  account       Account[]
   controllers   Controller[]
   recipes       Recipe[]
-  account       Account[]
   sessions      Session[]
 }
 
@@ -44,13 +44,13 @@ model Controller {
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
   isActive  Boolean   @default(false)
-  chefId    String
   location  String?
   recipeId  String    @default("1")
-  port      String      @default("5000")
+  port      String    @default("5000")
   ipAddress String
-  chef      Chef      @relation(fields: [chefId], references: [id])
+  userId    String
   recipe    Recipe    @relation(fields: [recipeId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
 }
 
 model RecipeSettings {
@@ -67,19 +67,18 @@ model RecipeSettings {
 
 model Account {
   id                String  @id @default(cuid())
-  chefId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  chef Chef @relation(fields: [chefId], references: [id], onDelete: Cascade)
+  userId            String
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -87,9 +86,9 @@ model Account {
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
-  chefId       String
   expires      DateTime
-  chef         Chef     @relation(fields: [chefId], references: [id], onDelete: Cascade)
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {

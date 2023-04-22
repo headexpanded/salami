@@ -7,7 +7,7 @@ import "@/styles/globals.css";
 export default function AddControllerPage() {
   const [controllerName, setControllerName] = useState("");
   const [controllerLocation, setControllerLocation] = useState("");
-  const [controllerPublicIpAddress, setControllerPublicIpAddress] =
+  const [controllerIPAddress, setControllerIPAddress] =
     useState("");
   const [controllerPort, setControllerPort] = useState("5000");
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -38,13 +38,13 @@ export default function AddControllerPage() {
             />
           </div>
           <div className="controller-form-input-wrapper">
-            <label htmlFor="publicIpAddress">Public IP Address:</label>
+            <label htmlFor="publicIpAddress">IP Address:</label>
             <input
               type="text"
               className="controller-form-input"
               placeholder="format: 000.000.000.0"
-              value={controllerPublicIpAddress}
-              onChange={(e) => setControllerPublicIpAddress(e.target.value)}
+              value={controllerIPAddress}
+              onChange={(e) => setControllerIPAddress(e.target.value)}
             />
           </div>
           <div className="controller-form-input-wrapper">

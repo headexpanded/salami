@@ -1,28 +1,27 @@
-"use client"
-
-import { useRouter } from "next/navigation";
-import React from "react";
-import Link from "next/link";
+import { getServerSession } from "next-auth/next";
+import { getControllerByUserId } from "@/lib/controllers";
+import Controllers from "./Controllers";
 import "@/styles/globals.css";
 
-const ControllersPage = () =>{
-  
-  const router = useRouter();
+const ControllersPage = async () => {
+  const session = await getServerSession();
+  const { controllers } = await getControllerByUserId();
+  return (
+    <div>
+      <h2>Hello {session?.user?.name}</h2>
+      <Controllers controllers={controllers} />
+    </div>
+  );
+};
 
+export default ControllersPage;
 
-    return (
-      <>
-        <main>
-          <div className="subcontainer">
-            <div className="links">
-              <Link href="./controllers/addController">
-                <button className="btn">Add New Controller</button>
-              </Link>
-            </div>
+/* <main>
+        <div className="subcontainer">
+          <div className="links">
+            <Link href="./controllers/addController">
+              <button className="btn">Add New Controller</button>
+            </Link>
           </div>
-        </main>
-      </>
-    );
-}
-
-export default ControllersPage
+        </div>
+      </main> */

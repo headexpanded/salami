@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-
-
+import { getServerSession } from "next-auth";
+import { AuthOptions, authOptions } from "../pages/api/auth/[...nextauth]";
 import "@/styles/globals.css";
 import Link from "next/link";
-import Controller from "../../Components/Shared/Controller";
+import Controller from "./controllers/Controllers";
 
 // Main app page
 
@@ -44,12 +44,20 @@ const notCuring = () => {
   );
 };
 
-export default function HomePage() {
-  
+const HomePage = async()=> {
+  const session = await getServerSession();
   return (
     <div>
       {/* <div className="card">{notCuring()}</div> */}
-      <div className="card"><h2>Welcome to Salami</h2></div>
+      <div className="card">
+        {session ? (
+          <h2>Welcome to Salami, {session?.user?.name}</h2>
+        ) : (
+          <h2>Welcome to Salami</h2>
+        )}
+      </div>
     </div>
   );
 }
+
+export default HomePage;

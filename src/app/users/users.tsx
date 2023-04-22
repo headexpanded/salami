@@ -1,14 +1,14 @@
 import "@/styles/globals.css";
 
-const Chefs = ({ chefs }: any) => {
+const Users = ({ users }: any) => {
   return (
     <section>
       <div className="card">
         <ul className="recipe-list">
-          {chefs?.map((chef: any) => (
-            <li key={chef.id}>
-              <p>{chef.name}</p>
-              <p>{chef.email}</p>
+          {users?.map((user: any) => (
+            <li key={user.id}>
+              <p>{user.name}</p>
+              <p>{user.email}</p>
             </li>
           ))}
         </ul>
@@ -16,5 +16,4 @@ const Chefs = ({ chefs }: any) => {
     </section>
   );
 };
-
-export default Chefs;
+export default Users;

@@ -37,11 +37,18 @@
     "src/api/hello/route.js",
     "pr.mjs",
     "src/app/current/layout.js",
-    "src/app/controllers/layout.js",
+    "src/app/controllers/layout.ts",
     "src/app/api/targetData/route.ts",
     "src/app/api/auth/[...nextauth].ts",
     "src/app/api/auth/logout.tsx",
-    "src/app/sign-up"
-, "src/app/chefs/[chefId]/page.jsx", "lib/prisma.ts", "src/app/chefs/[chefId]/chef.jsx", "src/app/sign-in/page.jsx", "src/pages/api/db/createRecipe.js"  ],
+    "src/app/sign-up",
+    "src/app/users/[userId]/page.jsx",
+    "lib/prisma.ts",
+    "src/app/users/[userId]/user.jsx",
+    "src/app/sign-in/page.jsx",
+    "src/pages/api/db/createRecipe.js",
+    "src/app/controllers/[controllerId]/page.jsx",
+    "src/pages/api/auth/[...nextauth].js"
+  ],
   "exclude": ["node_modules"]
 }

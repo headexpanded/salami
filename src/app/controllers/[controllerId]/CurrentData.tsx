@@ -17,14 +17,14 @@ interface TargetData {
 [];
 
 type CurrentDataPageProps = {
-  controllerId: number;
-  recipeId: number | 1;
+  controllerId: string;
+  recipeId: string ;
 };
 
 const CURRENT_DATA_SOURCE_URL = "http://192.168.178.109:5000/api/current_data";
 const TARGET_DATA_SOURCE_URL = "http://localhost:3000/api/targetData";
 
-async function fetchCurrentData(controllerId: number): Promise<CurrentData[]> {
+async function fetchCurrentData(controllerId: string): Promise<CurrentData[]> {
   try {
     const response = await fetch(CURRENT_DATA_SOURCE_URL, {
       cache: "force-cache",
@@ -42,7 +42,7 @@ async function fetchCurrentData(controllerId: number): Promise<CurrentData[]> {
   }
 }
 
-async function fetchTargetData(recipeId: Number): Promise<TargetData[]> {
+async function fetchTargetData(recipeId: string): Promise<TargetData[]> {
   try {
     const response = await fetch(TARGET_DATA_SOURCE_URL, {
       cache: "force-cache",

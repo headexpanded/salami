@@ -1,16 +1,16 @@
 import "@/styles/globals.css";
 import Link from "next/link";
 
-const Chef = ({ chef }) => {
-  console.log(chef);
+const User = ({ user }) => {
+  console.log(user);
   return (
     <section>
       <div className="card animated fadeInDown">
-        <p>{chef?.name}</p>
-        <p>{chef?.email}</p>
+        <p>{user?.name}</p>
+        <p>{user?.email}</p>
         <ul className="recipe-list">
-          {chef?.controllers?.length > 0 ? (
-            chef.controllers.map((controller) => (
+          {user?.controllers?.length > 0 ? (
+            user.controllers.map((controller) => (
               <li key="controllerId">
                 <p>{controller.name}</p>
                 <p>{controller.location}</p>
@@ -25,4 +25,4 @@ const Chef = ({ chef }) => {
   );
 };
 
-export default Chef;
+export default User;
