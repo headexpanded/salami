@@ -14,22 +14,22 @@ export const authOptions = {
   ],
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: "jwt",
+    
   },
   pages: {},
   callbacks: {
-    async jwt({ token, account, profile }) {
+    /* async jwt({ token, account, profile, user }) {
       if (account) {
         token.accessToken = account.access_token;
-        token.id = profile.id;
+        token.id = user.id;
         token.email = profile.email;
       }
       return token;
-    },
-    async session({ session, token }) {
-      session.accessToken = token.accessToken;
-      session.user.id = token.id;
-      session.email = token.email;
+    }, */
+    async session({ session, user }) {
+      
+      session.user.id = user.id;
+      session.email = user.email;
       return session;
     },
   },

@@ -1,13 +1,23 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
+import { createController } from "@/lib/controllers";
 import Link from "next/link";
 import "@/styles/globals.css";
 
 export default function AddControllerPage() {
-  const { data: session } = useSession();
-  
-  const { 
+  const { data: session, status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      return (
+        <div>
+          <p>Unauthenticated</p>
+        </div>
+      );
+    },
+  });
+
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -24,9 +34,11 @@ export default function AddControllerPage() {
   return (
     <>
       <div className="sub-container animated fadeInDown">
-        <h3>Add Controller</h3>
+        <h3>Add Controller, {session?.user?.name}</h3>
         <form
-          onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit((data) => {
+            console.log(data);
+          })}
           className="controller-form"
         >
           <input

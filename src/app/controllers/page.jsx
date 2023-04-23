@@ -1,16 +1,22 @@
 import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getControllerByUserId } from "@/lib/controllers";
 import Controllers from "./Controllers";
 import "@/styles/globals.css";
 
+
+
 const ControllersPage = async () => {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   const { controllers } = await getControllerByUserId();
   return (
-    <div>
-      <h2>Hello {session?.user?.name}</h2>
-      <Controllers controllers={controllers} />
-    </div>
+    <main>
+      <div>
+        <h2>Hello {session?.user?.name}</h2>
+        <Controllers controllers={controllers} />
+        <pre>{JSON.stringify(session, null, 2)}</pre>
+      </div>
+    </main>
   );
 };
 

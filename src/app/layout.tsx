@@ -45,9 +45,11 @@ export default async function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <AuthContext session={session}>
+          {/* @ts-expect-error Async Server Component*/}
           <Header />
           <main className="container">
             <div>{children}</div>
+            <pre>{ JSON.stringify(session, null, 2) }</pre>
           </main>
           <Footer />
         </AuthContext>

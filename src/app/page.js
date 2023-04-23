@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { getServerSession } from "next-auth";
-import { AuthOptions, authOptions } from "../pages/api/auth/[...nextauth]";
+import {  authOptions } from "../pages/api/auth/[...nextauth]";
 import "@/styles/globals.css";
 import Link from "next/link";
 import Controller from "./controllers/Controllers";
@@ -45,7 +45,7 @@ const notCuring = () => {
 };
 
 const HomePage = async()=> {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   return (
     <div>
       {/* <div className="card">{notCuring()}</div> */}
