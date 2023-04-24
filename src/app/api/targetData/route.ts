@@ -31,12 +31,12 @@ export async function GET() {
 }
  */
 
-export async function GET() {
+export async function GET(recipeId: string) {
   const id = 1;
-  console.log("The passed id is: " + id);
+  console.log("The passed id is: " + recipeId);
   try {
     const targetSettings = await prisma.recipeSettings.findMany({
-      where: { recipeId: id.toString(), day: { equals: "17" } },
+      where: { recipeId, day: { equals: "4" } },
     });
     return NextResponse.json(targetSettings);
   } catch (error) {

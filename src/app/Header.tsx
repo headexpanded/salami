@@ -1,9 +1,7 @@
-import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import SignInButton from "./components/auth/SignInButton";
 
 const Header = async () => {
-  const session = await getServerSession();
   return (
     <>
       <header className="header">
@@ -18,15 +16,9 @@ const Header = async () => {
           </div>
         </div>
         <div>
-          {session ? (
-            <div>
-              <Link href="/api/auth/signout">Sign Out</Link>
-            </div>
-          ) : (
-            <div>
-              <SignInButton />
-            </div>
-          )}
+          <div>
+            <SignInButton />
+          </div>
         </div>
       </header>
     </>
