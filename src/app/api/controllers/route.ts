@@ -1,9 +1,10 @@
 // API routes for managing controllers
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
+import bodyParser from "body-parser";
 
 import prisma from "@/lib/prisma";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
     const controllers = await prisma.controller.findMany();
     console.log(controllers);
@@ -15,7 +16,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function PATCH(request: Request) {
+export async function PATCH(request: NextRequest) {
   const { id, isActive } = await request.json();
   try {
     const activeController = await prisma.controller.update({
@@ -30,22 +31,28 @@ export async function PATCH(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest, response: NextResponse) {
+  
   type Controller = {
     name: string;
     location: string;
     ipAddress: string;
     isActive: boolean;
     port: string;
+    recipeId: string;
     userId: string;
   }
-  const { name, location, ipAddress, isActive, port, userId }:Controller = await request.json();
+
+  const { name, location, ipAddress, isActive, port, recipeId, userId }:Controller = await request.json();
   try {
+    
+     
     const newController = await prisma.controller.create({
-      data: { name, location, ipAddress, isActive, port, userId },
+      data: { name, location, ipAddress, isActive, port, recipeId, userId },
     });
     return NextResponse.json({ newController }, { status: 201 });
   } catch (error: unknown) {
+    console.log(error);
     throw new Error(`Error creating controller: ${error}`);
   } finally {
     await prisma.$disconnect();
