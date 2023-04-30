@@ -3,11 +3,12 @@ import RecipeSettings from "./RecipeSettings";
 
 type RecipePageProps = {
   params: {
-    id: number;
+    id: string;
   };
 };
 
 const RecipePage = ({ params: { id } }: RecipePageProps) => {
+  console.log("The recipe id is: ", id);
   return (
     <div className="card">
       <h3>Settings</h3>

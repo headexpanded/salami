@@ -1,28 +1,29 @@
-// Calls all recipes from the API router
-// Puts them in individual list items.
+// Calls all of a user's recipes from the db
 
-import Link from "next/link";
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { getRecipeByUserId } from '@/lib/recipes';
+import Link from 'next/link';
 
 interface Recipe {
   id: string | null;
   name: string;
   description: string;
   createdAt: Date | null;
+  userId: string;
 }
 
-const DATA_SOURCE_URL = "http://localhost:3000/api/recipes";
-
-async function fetchRecipes(): Promise<Recipe[]> {
-  const response = await fetch(DATA_SOURCE_URL, { cache: "force-cache" });
-  const recipes: Recipe[] = await response.json();
+async function fetchRecipes(userId: string) {
+  const recipes = await getRecipeByUserId(userId);
   return recipes;
 }
 
 const Recipe = async () => {
-  const recipes = await fetchRecipes();
+  const session = await getServerSession(authOptions);
+  const recipes = await fetchRecipes(session?.user?.id);
   return (
     <ul className="recipe-list">
-      {recipes.map((recipe) => (
+      {recipes.recipes?.map((recipe) => (
         <li key={recipe.id}>
           <Link href={`/profile/recipes/${recipe.id}`}>
             <h3>{recipe.name}</h3>

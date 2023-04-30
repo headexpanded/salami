@@ -4,9 +4,11 @@ import bodyParser from "body-parser";
 
 import prisma from "@/lib/prisma";
 
-export async function GET(request: NextRequest) {
+export async function GET(userId: string) {
   try {
-    const controllers = await prisma.controller.findMany();
+    const controllers = await prisma.controller.findMany(
+      {where: { userId }}
+    );
     console.log(controllers);
     return NextResponse.json({ controllers }, { status: 200 });
   } catch (error: unknown) {

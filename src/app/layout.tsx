@@ -1,22 +1,22 @@
-import React from "react";
-import { Session } from "next-auth";
-import { headers } from "next/headers";
-import AuthContext from "./AuthContext";
-import { Poppins } from "next/font/google";
-import type { Metadata } from "next";
-import Header from "./Header";
-import Footer from "./Footer";
-import "@/styles/globals.css";
+import React from 'react';
+import { Session } from 'next-auth';
+import { headers } from 'next/headers';
+import AuthContext from './AuthContext';
+import { Poppins } from 'next/font/google';
+import type { Metadata } from 'next';
+import Header from './Header';
+import Footer from './Footer';
+import '@/styles/globals.css';
 
 const poppins = Poppins({
-  weight: ["400", "700"],
-  subsets: ["latin"],
+  weight: ['400', '700'],
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Salami",
-  description: "Home-made app for curing home-made salami",
-  keywords: "salami, home cured salami, home curing, home-made salami curing",
+  title: 'Salami',
+  description: 'Home-made app for curing home-made salami',
+  keywords: 'salami, home cured salami, home curing, home-made salami curing',
 };
 
 async function getSession(cookie: string): Promise<Session> {
@@ -40,7 +40,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getSession(headers().get("cookie") ?? "");
+  const session = await getSession(headers().get('cookie') ?? '');
   return (
     <html lang="en">
       <body className={poppins.className}>
@@ -49,7 +49,7 @@ export default async function RootLayout({
           <Header />
           <main className="container">
             <div>{children}</div>
-            <pre>{ JSON.stringify(session, null, 2) }</pre>
+            <pre>{JSON.stringify(session, null, 2)}</pre>
           </main>
           <Footer />
         </AuthContext>

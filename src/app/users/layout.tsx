@@ -8,7 +8,7 @@ export default function UsersLayout({
 }) {
   return (
     <section>
-      <main>
+      <main className="card">
         <div className={styles.subcontainer}>
           <main>{children}</main>
         </div>

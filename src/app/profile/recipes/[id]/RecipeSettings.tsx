@@ -22,11 +22,11 @@ interface RecipeSettingsInclude {
 }
 
 type RecipeSettingsProps = {
-  recipeId: number;
+  recipeId: string;
 };
 
 async function fetchRecipeSettings(
-  recipeId: number
+  recipeId: string
 ): Promise<RecipeSettings[]> {
   try {
     const recipeSettings = await prisma.recipeSettings.findMany({

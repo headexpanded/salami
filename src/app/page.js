@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { getServerSession } from "next-auth";
-import {  authOptions } from "../pages/api/auth/[...nextauth]";
-import "@/styles/globals.css";
-import Link from "next/link";
-import Controller from "./controllers/Controllers";
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../pages/api/auth/[...nextauth]';
+import '@/styles/globals.css';
+import Link from 'next/link';
+import Controller from './controllers/Controller';
 
 // Main app page
 
@@ -44,7 +44,7 @@ const notCuring = () => {
   );
 };
 
-const HomePage = async()=> {
+const HomePage = async () => {
   const session = await getServerSession(authOptions);
   return (
     <div>
@@ -58,6 +58,6 @@ const HomePage = async()=> {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;
