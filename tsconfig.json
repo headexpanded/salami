@@ -42,13 +42,15 @@
     "src/app/api/auth/[...nextauth].ts",
     "src/app/api/auth/logout.tsx",
     "src/app/sign-up",
-    "src/app/users/[userId]/page.jsx",
+    "src/app/users/[id]/page.jsx",
     "lib/prisma.ts",
-    "src/app/users/[userId]/user.jsx",
+    "src/app/users/[id]/user.jsx",
     "src/app/sign-in/page.jsx",
     "src/pages/api/db/createRecipe.js",
-    "src/app/controllers/[controllerId]/page.jsx",
-    "src/pages/api/auth/[...nextauth].js"
+    "src/app/controllers/[id]/page.tsx",
+    "src/pages/api/auth/[...nextauth].js",
+    "src/app/controllers/page.jsx",
+    "src/app/controllers/addController/page.jsx"
   ],
   "exclude": ["node_modules"]
 }
