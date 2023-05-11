@@ -48,7 +48,7 @@
     "src/app/sign-in/page.jsx",
     "src/pages/api/db/createRecipe.js",
     "src/app/controllers/[id]/page.tsx",
-    "src/pages/api/auth/[...nextauth].js",
+    "src/pages/api/auth/[...nextauth]-old.js",
     "src/app/controllers/page.jsx",
     "src/app/controllers/addController/page.jsx"
   ],
