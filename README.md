@@ -14,9 +14,6 @@ Dan wants to manage a Raspberry Pi which controls his fridge's thermostat and hu
 
 - The RP will control the fridge via some [Python](https://www.python.org/) scripts
 
-- Haven't decided on client hosting yet (maybe AWS).
-
-
 Let's go :)
 
 ## Contributing
