@@ -39,8 +39,8 @@ model Tag {
 }
 
 model Controller {
-  id        String    @id @default(cuid())
-  name      String    @unique
+  id        String    @id @default(cuid()) @db.Text
+  name      String    @unique @db.Text
   createdAt DateTime? @default(now())
   updatedAt DateTime? @updatedAt
   isActive  Boolean   @default(false)

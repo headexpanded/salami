@@ -3,6 +3,7 @@
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 import { authOptions } from '../api/auth/[...nextauth]/route';
+import type { AuthOptions } from 'next-auth';
 import { getControllerByUserId } from '@/lib/controllers';
 import Link from 'next/link';
 
@@ -40,6 +41,7 @@ const Controller = async () => {
           >
             <h3>{controller.name}</h3>
             <p>{controller.location}</p>
+            {controller.isActive ? <p style = {{color: 'green'}}>Active</p> : <p>Not active</p>}
           </Link>
         </li>
       ))}

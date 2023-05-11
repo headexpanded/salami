@@ -21,7 +21,6 @@ export const authOptions = {
     },
   },
   theme: {
-    colorScheme: 'light',
     brandColor: '#dd0404',
     logo: '/salami-02.png',
   },
