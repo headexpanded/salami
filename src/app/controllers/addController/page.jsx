@@ -1,11 +1,12 @@
 'use client';
 import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import '@/styles/globals.css';
 
 export default function AddControllerPage() {
-  const { data: session, status } = useSession({
+  const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
       return (
@@ -17,6 +18,7 @@ export default function AddControllerPage() {
   });
 
   const DATA_SOURCE_URL = 'http://localhost:3000/api/controllers';
+  const DEFAULT_RECIPE_ID = '1';
 
   const {
     register,
@@ -29,7 +31,7 @@ export default function AddControllerPage() {
       ipAddress: '',
       port: '',
       isActive: false,
-      recipeId: '1',
+      recipeId: DEFAULT_RECIPE_ID,
       userId: session?.user?.id,
     },
     mode: 'onSubmit',
@@ -43,8 +45,6 @@ export default function AddControllerPage() {
         <h3>Add Controller, {session?.user?.name}</h3>
         <form
           onSubmit={handleSubmit(async (data) => {
-            console.log('HERE IS THE DATA: ', JSON.stringify(data));
-            alert(JSON.stringify(data));
             const req = new Request(DATA_SOURCE_URL, {
               method: 'POST',
               body: JSON.stringify(data),
@@ -58,9 +58,7 @@ export default function AddControllerPage() {
                 if (response.status === 201) {
                   return response.json();
                 } else {
-                  throw new Error(
-                    "This still doesn't work: " + response.status
-                  );
+                  throw new Error('Error writing to db: ' + response.status);
                 }
               })
               .then((response) => {
@@ -70,15 +68,6 @@ export default function AddControllerPage() {
                 console.error(error);
               });
           })}
-          /* const res = await fetch(DATA_SOURCE_URL, {
-              headers : {
-                "Content-Type": "application/json",
-              },
-              method: "POST",
-              body: JSON.stringify(data),
-            });
-            console.log(res.body)
-          })} */
           className="controller-form"
         >
           <input

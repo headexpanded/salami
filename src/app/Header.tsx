@@ -1,7 +1,7 @@
-import Link from "next/link";
-import SignInButton from "./components/auth/SignInButton";
+import Link from 'next/link';
+import SignInButton from './components/auth/SignInButton';
 
-const Header = async () => {
+const Header = () => {
   return (
     <>
       <header className="header">

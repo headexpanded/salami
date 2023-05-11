@@ -47,8 +47,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
   const { name, location, ipAddress, isActive, port, recipeId, userId }:Controller = await request.json();
   try {
-    
-     
     const newController = await prisma.controller.create({
       data: { name, location, ipAddress, isActive, port, recipeId, userId },
     });
