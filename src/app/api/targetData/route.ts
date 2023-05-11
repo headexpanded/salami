@@ -11,7 +11,7 @@ type targetSettings = {
 export async function GET(request: Request, recipeId: string) {
   try {
     const targetSettings = await prisma.recipeSettings.findFirst({
-      where: { recipeId, day: { equals: '6' } },
+      where: { recipeId, day: { equals: '3' } },
     }) as targetSettings;
     return NextResponse.json([targetSettings]);
   } catch (error: unknown) {

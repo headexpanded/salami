@@ -1,7 +1,8 @@
 // Calls all of a user's controllers from the db
 
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { redirect } from 'next/navigation';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 import { getControllerByUserId } from '@/lib/controllers';
 import Link from 'next/link';
 
@@ -23,6 +24,9 @@ async function fetchControllers(userId: string) {
 
 const Controller = async () => {
   const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect('/signin?callbackUrl=/controllers');
+  }
   const controllers = await fetchControllers(session?.user?.id);
   return (
     <ul className="recipe-list">
@@ -71,7 +75,6 @@ const Controller = async () => {
     }
   }; */
 
-  
   return (
     <section>
       <div className="card">

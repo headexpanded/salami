@@ -24,7 +24,7 @@ const TARGET_DATA_SOURCE_URL = 'http://localhost:3000/api/targetData';
 async function fetchCurrentData(controllerId: string): Promise<CurrentData[]> {
   try {
     const response = await fetch(CURRENT_DATA_SOURCE_URL, {
-      cache: 'force-cache',
+      cache: 'no-store',
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const CurrentDataPage = async ({
   const { current_time, current_temperature, current_humidity } =
     currentData[0];
   const { temp, humidity } = targetData[0];
-  const tempVariance = temp - current_temperature
+  const tempVariance = temp - current_temperature;
   return (
     <>
       <div className="dataGrid">

@@ -231,8 +231,8 @@ a {
 
 .dataGrid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 4rem;
   margin: 1rem;
 }
 

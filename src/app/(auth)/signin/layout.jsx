@@ -1,10 +1,11 @@
 import "@/styles/globals.css";
 import AuthContext from "@/app/AuthContext";
+import Provider from '@Components/Shared/Provider';
 
 export default function AuthLayout({ children }) {
   return (
-    <AuthContext>
+    <Provider>
       <div>{children}</div>
-    </AuthContext>
+    </Provider>
   );
 }

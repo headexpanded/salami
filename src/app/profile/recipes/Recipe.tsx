@@ -1,7 +1,7 @@
 // Calls all of a user's recipes from the db
 
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { authOptions } from '../../api/auth/[...nextauth]/route';
 import { getRecipeByUserId } from '@/lib/recipes';
 import Link from 'next/link';
 
