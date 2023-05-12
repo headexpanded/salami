@@ -18,7 +18,7 @@ interface Controller {
   userId: string;
 }
 
-async function fetchControllers(userId: string) {
+async function fetchControllers(userId: string){
   const controllers = await getControllerByUserId(userId);
   return controllers;
 }
@@ -29,6 +29,7 @@ const Controller = async () => {
     redirect('/signin?callbackUrl=/controllers');
   }
   const controllers = await fetchControllers(session?.user?.id);
+  
   return (
     <ul className="recipe-list">
       {controllers.controllers?.map((controller) => (

@@ -29,7 +29,7 @@ export default function AddControllerPage() {
       name: '',
       location: '',
       ipAddress: '',
-      port: '',
+      port: '5000',
       isActive: false,
       recipeId: DEFAULT_RECIPE_ID,
       userId: session?.user?.id,

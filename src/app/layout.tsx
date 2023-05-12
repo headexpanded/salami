@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Header from './Header';
 import Footer from './Footer';
 import '@/styles/globals.css';
-import { Provider } from '@Components/Shared/Provider';
+import { Provider } from '@/Components/Shared/Provider';
 
 const poppins = Poppins({
   weight: ['400', '700'],

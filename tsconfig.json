@@ -4,6 +4,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "noImplicitAny": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -18,7 +19,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/lib/*": ["lib/*"],
-      "@Components/Shared/*": ["Components/Shared/"],
+      "@/Components/Shared/*": ["Components/Shared/"],
       "@/styles": ["../src/styles/"],
       "@/public/*": ["public/*"]
     },
@@ -36,7 +37,7 @@
     "src/app/second/page.js",
     "src/api/hello/route.js",
     "pr.mjs",
-    "src/app/current/layout.js",
+    "src/app/current/layout.tsx",
     "src/app/controllers/layout.ts",
     "src/app/api/targetData/route.ts",
     "src/app/api/auth/[...nextauth].ts",
@@ -49,8 +50,9 @@
     "src/pages/api/db/createRecipe.js",
     "src/app/controllers/[id]/page.tsx",
     "src/pages/api/auth/[...nextauth]-old.js",
-    "src/app/controllers/page.jsx",
-    "src/app/controllers/addController/page.jsx"
+    "src/app/controllers/page.tsx",
+    "src/app/controllers/addController/page.jsx",
+    "lib/controllers.js"
   ],
   "exclude": ["node_modules"]
 }
