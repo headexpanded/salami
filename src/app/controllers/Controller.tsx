@@ -78,59 +78,7 @@ const Controller = async () => {
     }
   }; */
 
-  return (
-    <section>
-      <div className="card">
-        <ul className="recipe-list">
-          {controllers.length > 0 ? (
-            controllers.map((controller: Controller) => (
-              <li key={controller.id}>
-                <Link href={`/controllers/${controller.id}`}>
-                  <h3>{controller.name}</h3>
-                  <p>{controller.location}</p>
-                  <p>{controller.ipAddress}</p>
-                  {controller.isActive ? (
-                    <div className="sub-container-detail">
-                      <p>
-                        <strong>Active</strong>
-                      </p>
-                      {/* <button
-                        className="btn btn-action btn-warning"
-                        onClick={() => handleDisConnectClick(controller.id)}
-                      >
-                        Disconnect
-                      </button> */}
-                    </div>
-                  ) : (
-                    <div className="sub-container-detail">
-                      <p>Not active</p>
-                      {/* <button
-                        className="btn btn-action"
-                        onClick={() => handleConnectClick(controller.id)}
-                      >
-                        Connect
-                      </button> */}
-                    </div>
-                  )}
-                </Link>
-                {controller.isActive ? (
-                  <div>
-                    {/* <CurrentData controllerId={controller.id} recipeId={"1"} /> */}
-                  </div>
-                ) : (
-                  <div></div>
-                )}
-              </li>
-            ))
-          ) : (
-            <div>
-              <p>You have no controllers in the database.</p>
-            </div>
-          )}
-        </ul>
-      </div>
-    </section>
-  );
+  
 };
 
 export default Controller;

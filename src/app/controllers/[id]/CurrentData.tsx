@@ -22,6 +22,7 @@ const CURRENT_DATA_SOURCE_URL = 'http://192.168.178.109:5000/api/current_data';
 const TARGET_DATA_SOURCE_URL = 'http://localhost:3000/api/targetData';
 
 async function fetchCurrentData(controllerId: string): Promise<CurrentData[]> {
+  console.log(controllerId)
   try {
     const response = await fetch(CURRENT_DATA_SOURCE_URL, {
       cache: 'no-store',
@@ -69,8 +70,6 @@ const CurrentDataPage = async ({
   const currentData = await fetchCurrentData(controllerId);
   const targetData = await fetchTargetData(recipeId);
 
-  /* const intervalId = setInterval(fetchData, 60 * 1000);
-    return () => clearInterval(intervalId); */
   if (!currentData[0] || !targetData[0]) {
     return <div>Loading...</div>;
   }

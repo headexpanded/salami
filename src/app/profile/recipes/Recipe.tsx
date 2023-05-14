@@ -23,7 +23,7 @@ const Recipe = async () => {
   const recipes = await fetchRecipes(session?.user?.id);
   return (
     <ul className="recipe-list">
-      {recipes.recipes?.map((recipe) => (
+      {recipes.recipes?.map((recipe: Recipe) => (
         <li key={recipe.id}>
           <Link href={`/profile/recipes/${recipe.id}`}>
             <h3>{recipe.name}</h3>
