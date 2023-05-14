@@ -8,12 +8,12 @@ datasource db {
 }
 
 model Recipe {
-  name           String           @unique
+  name           String           @unique @db.VarChar(50)
   description    String           @default("no description provided")
-  createdAt      DateTime?        @default(now())
-  updatedAt      DateTime?        @updatedAt
-  id             String           @id @default(cuid())
-  userId         String
+  createdAt      DateTime?        @default(now()) @db.Timestamptz(3)
+  updatedAt      DateTime?        @updatedAt @db.Timestamptz(3)
+  id             String           @id @default(cuid()) @db.VarChar(50)
+  userId         String           @db.VarChar(50)
   controllers    Controller[]
   user           User             @relation(fields: [userId], references: [id])
   recipeSettings RecipeSettings[]
@@ -21,10 +21,10 @@ model Recipe {
 }
 
 model User {
-  id            String       @id @default(cuid())
+  id            String       @id @default(cuid()) @db.VarChar(50)
   name          String       @unique
-  email         String       @unique
-  emailVerified DateTime?
+  email         String       @unique @db.VarChar(50)
+  emailVerified DateTime?    @db.Timestamptz(3)
   image         String?
   account       Account[]
   controllers   Controller[]
@@ -39,29 +39,29 @@ model Tag {
 }
 
 model Controller {
-  id        String    @id @default(cuid()) @db.Text
-  name      String    @unique @db.Text
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @updatedAt
+  id        String    @id @default(cuid()) @db.VarChar(50)
+  name      String    @unique
+  createdAt DateTime? @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime? @updatedAt @db.Timestamptz(3)
   isActive  Boolean   @default(false)
   location  String?
-  recipeId  String    @default("1")
+  recipeId  String    @default("1") @db.VarChar(50)
   port      String    @default("5000")
-  ipAddress String
-  userId    String
+  ipAddress String    @db.VarChar(20)
+  userId    String    @db.VarChar(50)
   recipe    Recipe    @relation(fields: [recipeId], references: [id])
   user      User      @relation(fields: [userId], references: [id])
 }
 
 model RecipeSettings {
-  id       String @id @default(cuid())
+  id       String @id @default(cuid()) @db.VarChar(50)
   day      String
   temp     Int
   humidity Int
   tempOff  Int
   tempOn   Int
   hours    Int
-  recipeId String
+  recipeId String @db.VarChar(50)
   recipe   Recipe @relation(fields: [recipeId], references: [id])
 }
 
