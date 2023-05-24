@@ -1,9 +1,9 @@
+'use client'
+
 import React from 'react';
-import { getServerSession } from 'next-auth/next';
+import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
-import { authOptions } from '../../api/auth/[...nextauth]/route';
 import Link from 'next/link';
-import { getControllerById } from '@/lib/controllers';
 import CurrentData from './CurrentData';
 
 type ControllerPageProps = {
@@ -23,26 +23,52 @@ interface Controller {
   userId: string;
 }
 
+const CONTROLLER_DATA_SOURCE_URL = '/api/controllers';
+
+const handleDeleteClick = (controllerId: string) => {
+  alert("Do you really want to delete this controller?")
+}
+
 async function fetchController(controllerId: string) {
-  const controller = await getControllerById(controllerId);
-  if (!controller) {
-    throw new Error('Controller not found');
+  try {
+    const response = await fetch(CONTROLLER_DATA_SOURCE_URL, {
+      cache: 'no-store',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        controllerId: `${controllerId}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error('Error fetching controller: ${response.statusText}');
+    }
+    const controller: Controller = await response.json();
+    return controller
+    /* if (!controller) {
+      throw new Error('Controller not found');
+    }
+    return controller; */
+  } catch (error) {
+    console.log(error)
+    return null;
   }
-  return controller;
 }
 
 const ControllerPage = async ({ params: { id } }: ControllerPageProps) => {
-  const session = await getServerSession(authOptions);
+  const { data: session } = useSession({
+    required: true,
+  });
+  //const session = await getServerSession(authOptions);
   if (!session) {
-    redirect('/signin?callbackUrl=/controllers');
+    //redirect('/signin?callbackUrl=/controllers');
   }
   const controllerId = id;
   const controller = await fetchController(controllerId);
   console.log(controller);
 
-  const controllerContent = controller.controller?.isActive ? (
+  const controllerContent = controller?.isActive ? (
     <>
-      <h2>{controller?.controller?.name}</h2>
+      <h2>{controller?.name}</h2>
       <h3>Current Data</h3>
       {/* @ts-expect-error Async Server Component*/}
       <CurrentData controllerId={controllerId} recipeId="1" />
@@ -55,8 +81,8 @@ const ControllerPage = async ({ params: { id } }: ControllerPageProps) => {
     </>
   ) : (
     <div>
-        <h2>{controller?.controller?.name}</h2>
-        <h3>{controller?.controller?.location}</h3>
+      <h2>{controller?.name}</h2>
+      <h3>{controller?.location}</h3>
 
       <button
         className="btn btn-action"
@@ -64,6 +90,14 @@ const ControllerPage = async ({ params: { id } }: ControllerPageProps) => {
       >
         Activate
       </button>
+      <div>
+        <button
+          className="btn btn-action"
+          onClick={() => handleDeleteClick(controller!.id)}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 

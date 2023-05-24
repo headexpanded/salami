@@ -2,6 +2,7 @@
 
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../../api/auth/[...nextauth]/route';
+import { redirect } from 'next/navigation';
 import { getRecipeByUserId } from '@/lib/recipes';
 import Link from 'next/link';
 
@@ -20,6 +21,9 @@ async function fetchRecipes(userId: string) {
 
 const Recipe = async () => {
   const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect('/signin?callbackUrl=/recipes');
+  }
   const recipes = await fetchRecipes(session?.user?.id);
   return (
     <ul className="recipe-list">
