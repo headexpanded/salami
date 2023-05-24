@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2016",
+    "rootDir": ".",
+    "outDir": "./dist",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -53,6 +55,6 @@
     "src/app/controllers/page.tsx",
     "src/app/controllers/addController/page.jsx",
     "lib/controllers.js"
-  ],
+, "src/app/api/auth/[...nextauth]/route.ts"  ],
   "exclude": ["node_modules"]
 }
